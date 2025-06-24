@@ -1,5 +1,5 @@
 import React from 'react';
-import { FaUserFriends, FaBriefcase, FaHeart, FaRobot } from 'react-icons/fa';
+import { FaUserFriends, FaBriefcase, FaHandshake, FaRobot } from 'react-icons/fa';
 
 const InputSection = ({ 
   inputText, 
@@ -12,26 +12,28 @@ const InputSection = ({
   const styleOptions = [
     { id: 'friend', name: '친구에게', icon: <FaUserFriends />, color: 'blue' },
     { id: 'boss', name: '직장 상사에게', icon: <FaBriefcase />, color: 'gray' },
-    { id: 'date', name: '초면인 상대에게', icon: <FaHeart />, color: 'pink' },
+    { id: 'date', name: '낯선 사람에게', icon: <FaHandshake />, color: 'purple' },
     { id: 'ai', name: 'AI에게', icon: <FaRobot />, color: 'green' }
   ];
 
   return (
-    <div className="mb-6">
-      <h2 className="text-2xl font-bold mb-4 text-gray-800">어떻게 말할까요?</h2>
+    <div className="mb-8">
+      <h2 className="text-2xl font-bold mb-4 text-slate-800">
+        <span className="border-b-2 border-slate-700 pb-1">어떻게 말할까요?</span>
+      </h2>
       
-      <div className="mb-4">
+      <div className="mb-5">
         <textarea
           value={inputText}
           onChange={(e) => setInputText(e.target.value)}
           placeholder="번역할 문장을 입력하세요..."
-          className="w-full p-4 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 h-32 transition-all duration-200"
+          className="w-full p-5 border-0 rounded-lg shadow-inner bg-slate-50 focus:ring-1 focus:ring-slate-400 focus:shadow-lg h-32 transition-all duration-200"
         />
       </div>
       
-      <div className="mb-4">
-        <p className="text-sm text-gray-600 mb-2">누구에게 말하는 스타일로 바꿀까요?</p>
-        <div className="flex flex-wrap gap-2">
+      <div className="mb-6">
+        <p className="text-sm text-slate-600 mb-3 font-medium">누구에게 말하는 스타일로 바꿀까요?</p>
+        <div className="flex flex-wrap gap-3">
           {styleOptions.map(option => {
             // 선택된 스타일에 따라 명시적으로 클래스를 지정
             let buttonClass = "flex items-center px-4 py-2 rounded-full transition-all duration-200 ";
@@ -64,7 +66,7 @@ const InputSection = ({
                   buttonClass += "bg-gray-100 text-gray-700 hover:bg-gray-200 hover:text-gray-900";
                   break;
                 case 'date':
-                  buttonClass += "bg-gray-100 text-gray-700 hover:bg-pink-100 hover:text-pink-700";
+                  buttonClass += "bg-gray-100 text-gray-700 hover:bg-purple-100 hover:text-purple-700";
                   break;
                 case 'ai':
                   buttonClass += "bg-gray-100 text-gray-700 hover:bg-green-100 hover:text-green-700";
@@ -80,8 +82,8 @@ const InputSection = ({
                 onClick={() => setSelectedStyle(option.id)}
                 className={buttonClass}
               >
-                <span className="mr-2">{option.icon}</span>
-                {option.name}
+                <span className="mr-2 opacity-80">{option.icon}</span>
+                <span className="font-medium">{option.name}</span>
               </button>
             );
           })}

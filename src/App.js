@@ -66,10 +66,10 @@ function App() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-100">
+    <div className="flex flex-col min-h-screen bg-gray-100">
       <Header />
       
-      <main className="container mx-auto p-4 max-w-4xl">
+      <main className="container mx-auto p-4 max-w-4xl flex-grow">
         <div className="bg-white rounded-lg p-6 mb-8 border">
           <InputSection 
             inputText={inputText} 

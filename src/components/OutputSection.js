@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { FaUserFriends, FaBriefcase, FaHeart, FaRobot, FaCopy, FaCheck } from 'react-icons/fa';
+import { FaUserFriends, FaBriefcase, FaHandshake, FaRobot, FaCopy, FaCheck } from 'react-icons/fa';
 
 // 번역된 텍스트 출력 컴포넌트
 const OutputSection = ({ translatedText, selectedStyle }) => {
@@ -20,8 +20,8 @@ const OutputSection = ({ translatedText, selectedStyle }) => {
       className: 'boss-text'
     },
     date: {
-      title: '초면인 상대에게',
-      icon: <FaHeart />,
+      title: '낯선 사람에게',
+      icon: <FaHandshake />,
       className: 'date-text'
     },
     ai: {
@@ -60,10 +60,10 @@ const OutputSection = ({ translatedText, selectedStyle }) => {
   const { title, icon, className } = styleConfig[selectedStyle] || styleConfig.friend;
 
   return (
-    <div className="mt-8 border-t pt-6">
-      <div className="flex items-center justify-between mb-3">
-        <h3 className="text-xl font-bold text-gray-800 flex items-center">
-          <span className="mr-2">{icon}</span>
+    <div className="mt-10 border-t border-slate-200 pt-8">
+      <div className="flex items-center justify-between mb-4">
+        <h3 className="text-xl font-bold text-slate-700 flex items-center">
+          <span className="mr-2 bg-slate-100 p-1.5 rounded-md">{icon}</span>
           {title} 말투로 변환
         </h3>
         <button
@@ -84,11 +84,11 @@ const OutputSection = ({ translatedText, selectedStyle }) => {
       
       <div
         ref={resultRef}
-        className={`p-4 rounded-lg bg-gray-50 border border-gray-200 ${
+        className={`p-5 rounded-lg bg-slate-50 shadow-sm border-l-4 border-l-slate-300 ${
           isAnimating ? 'typing-animation overflow-hidden' : ''
         }`}
       >
-        <p className={`text-lg ${className}`}>
+        <p className={`text-lg leading-relaxed ${className}`}>
           {translatedText}
         </p>
       </div>
